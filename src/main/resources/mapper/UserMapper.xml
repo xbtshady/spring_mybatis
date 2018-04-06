@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.com.xw.mybatis.dao.IUserDao" >
+<mapper namespace="com.xw.mybatis.dao.IUserDao" >
 
-  <resultMap id="BaseResultMap" type="com.com.xw.mybatis.entity.User" >
+  <resultMap id="BaseResultMap" type="com.xw.mybatis.entity.User" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -14,7 +14,7 @@
     id, email, password,userName
   </sql>
 
-  <select id="login" resultMap="BaseResultMap" parameterType="com.com.xw.mybatis.entity.User">
+  <select id="login" resultMap="BaseResultMap" parameterType="com.xw.mybatis.entity.User">
     SELECT <include refid="Base_Column_List"/> FROM t_user WHERE userName = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
 
   </select>
@@ -31,12 +31,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" parameterType="com.com.xw.mybatis.entity.User" >
+  <insert id="insert" parameterType="com.xw.mybatis.entity.User" >
     insert into t_user (id, email, password,userName)
     values (#{id,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{username,jdbcType=VARCHAR})
   </insert>
 
-  <insert id="insertSelective" parameterType="com.com.xw.mybatis.entity.User" >
+  <insert id="insertSelective" parameterType="com.xw.mybatis.entity.User" >
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -68,7 +68,7 @@
     </trim>
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.com.xw.mybatis.entity.User" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.xw.mybatis.entity.User" >
     update t_user
     <set >
       <if test="email != null" >
@@ -84,7 +84,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <update id="updateByPrimaryKey" parameterType="com.com.xw.mybatis.entity.User" >
+  <update id="updateByPrimaryKey" parameterType="com.xw.mybatis.entity.User" >
     update t_user
     set email = #{email,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
